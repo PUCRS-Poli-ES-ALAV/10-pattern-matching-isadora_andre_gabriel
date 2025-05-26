@@ -1,10 +1,28 @@
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
         String s1 = "ABCDCBDCBDACBDABDCBADF";
         String s2 = "ADF";
 
-        Result result = SubstringSearchNaive.findSubstringNaive(s1, s2);
+        System.out.println("Rabin-Karp:");
+        System.out.println(RabinKarpSearch.search(s2, s1));
 
-        System.out.println(result);
+        String largeS1 = generateRandomString(600_000);
+        String largeS2 = "ABCDEF";
+
+        System.out.println("\nRabin-Karp com strings grandes:");
+        System.out.println(RabinKarpSearch.search(largeS2, largeS1));
+    }
+
+    public static String generateRandomString(int length) {
+        Random rand = new Random();
+        StringBuilder sb = new StringBuilder(length);
+        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        for (int i = 0; i < length; i++) {
+            sb.append(alphabet.charAt(rand.nextInt(alphabet.length())));
+        }
+        return sb.toString();
     }
 }
