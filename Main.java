@@ -13,6 +13,15 @@ public class Main {
 
         System.out.println("\nRabin-Karp com strings grandes:");
         System.out.println(RabinKarpSearch.search(largeS2, largeS1));
+
+        System.out.println("\\nKMP com string pequena:");
+        System.out.println(KMPStringMatching.search("abc", "ababcabcab"));
+
+        String longText = generateRandomString(600000);
+        String longPattern = "ABCDE";
+
+        System.out.println("\\nKMP com string grande:");
+        System.out.println(KMPStringMatching.search(longPattern, longText));
     }
 
     public static String generateRandomString(int length) {
